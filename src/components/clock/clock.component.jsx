@@ -3,14 +3,16 @@ import './clock.styles.scss';
 import EasyTimer from 'easytimer';
 
 class Clock extends React.Component {
+    defaultSeconds = 5;
+
     state = {
         timer: new EasyTimer(),
-        timeValues: ""
+        timeValues: this.defaultSeconds
     };
 
     componentDidMount() {
         const {timer} = this.state;
-        timer.start({countdown: true, startValues: {seconds: 5}});
+        timer.start({countdown: true, startValues: {seconds: this.defaultSeconds}});
         timer.addEventListener("secondsUpdated", this.secondPassed);
         timer.addEventListener("targetAchieved", this.timerDone);
     }
@@ -26,7 +28,7 @@ class Clock extends React.Component {
     }
 
     render() {
-        return <div className="App">{this.state.timeValues}</div>;
+        return <div className="clock">{this.state.timeValues}</div>;
     }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import './todo-list-item.styles';
+import './todo-list-item.styles.scss';
 import {ReactComponent as Trash} from "bootstrap-icons/icons/trash-fill.svg";
 
 const ToDoListItem = () => {
