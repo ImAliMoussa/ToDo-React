@@ -1,3 +1,18 @@
+.card-header:first-child {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  border-bottom-width: 1px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0.625rem;
+  height: 3.5rem;
+  background-color: #fff
+}
+
 .card-header.card-header-tab .card-header-title {
   display: flex;
   align-items: center;

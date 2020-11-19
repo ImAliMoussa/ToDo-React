@@ -13,6 +13,7 @@ const TodoList = () => {
                     <div className="scroll-area-sm">
                         <ul className=" list-group list-group-flush">
                             <ToDoListItem/>
+                            <ToDoListItem/>
                         </ul>
                     </div>
                     <ToDoFooter/>
