@@ -2,7 +2,8 @@ import React from 'react';
 import './todo-list-item.styles.scss';
 import {ReactComponent as Trash} from "bootstrap-icons/icons/trash-fill.svg";
 
-const ToDoListItem = () => {
+const ToDoListItem = (props) => {
+    const {todoContent, todoAuthor, todoTags} = props;
     return (
         <li className="list-group-item">
             <div className="todo-indicator bg-warning"/>
@@ -17,19 +18,18 @@ const ToDoListItem = () => {
                         </div>
                     </div>
                     <div className="widget-content-left">
-                        <div className="widget-heading">Call Sam For payments <div
+                        <div className="widget-heading">{todoContent}<div
                             className="badge bg-danger ml-2">Rejected</div>
                         </div>
                         <div className="widget-subheading">
-                            By Bob
+                            {todoAuthor}
                             <div className="badge rounded-pill bg-info ml-2">
-                                NEW
+                                {todoTags}
                             </div>
                         </div>
                     </div>
                     <div className="ml-auto">
-                        <button
-                            className="border-0 btn-transition btn btn-outline-danger">
+                        <button className="border-0 btn-transition btn btn-outline-danger">
                             <Trash/>
                         </button>
                     </div>
