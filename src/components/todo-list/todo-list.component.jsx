@@ -1,7 +1,6 @@
 import React from 'react';
 import './todo-list.styles.scss';
 import ToDoHeader from "../todo-header/todo-header.component";
-import ToDoFooter from "../todo-footer/todo-footer.component";
 import ToDoListItem from "../todo-list-item/todo-list-item.component";
 import {firestore} from "../../firebase/firebaseinit";
 
@@ -47,7 +46,7 @@ class TodoList extends React.Component {
     render() {
         const {todos} = this.state;
         return (
-            <div className="container">
+            <div className="container my-5">
                 <div className="row d-flex justify-content-center">
                     <div className="col-md-8">
                         <div className="card-hover-shadow-2x mb-3 card">
@@ -60,7 +59,6 @@ class TodoList extends React.Component {
                                     }
                                 </div>
                             </div>
-                            <ToDoFooter/>
                         </div>
                     </div>
                 </div>

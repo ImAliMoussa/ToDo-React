@@ -31,7 +31,8 @@ class ToDoListItem extends React.Component {
                                aria-label="Checkbox for following text input" onChange={this.handleInputChange}/>
                     </div>
                     <input type="text" className="form-control no-outline border-bottom-focus bg-transparent"
-                           aria-label="Text input with checkbox" name="val" value={this.state.val} onChange={this.handleInputChange}/>
+                           aria-label="Text input with checkbox" name="val" value={this.state.val}
+                           onChange={this.handleInputChange}/>
                 </div>
 
                 {/*trashcan svg on the right with delete functionality*/}
@@ -45,6 +46,6 @@ class ToDoListItem extends React.Component {
             </div>
         );
     }
-};
+}
 
 export default ToDoListItem;
