@@ -12,15 +12,26 @@ class ToDoListItem extends React.Component {
         }
     }
 
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
     render() {
         return (
-            <div className="d-flex dim-hover-focus my-2">
+            <div className="d-flex dim-hover-focus my-1 py-1">
                 <div className="input-group">
                     <div className="input-group-text bg-transparent no-outline">
                         <input className="form-check-input" type="checkbox" value=""
-                               aria-label="Checkbox for following text input"/>
+                               aria-label="Checkbox for following text input" onChange={this.handleInputChange}/>
                     </div>
-                    <input type="text" className="form-control no-outline border-bottom-focus bg-transparent" aria-label="Text input with checkbox" value={this.state.val}/>
+                    <input type="text" className="form-control no-outline border-bottom-focus bg-transparent"
+                           aria-label="Text input with checkbox" name="val" value={this.state.val} onChange={this.handleInputChange}/>
                 </div>
 
                 {/*trashcan svg on the right with delete functionality*/}
