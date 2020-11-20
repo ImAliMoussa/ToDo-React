@@ -1,9 +1,10 @@
 import React from 'react';
 import './todo-list-item.styles.scss';
 import {ReactComponent as Trash} from "bootstrap-icons/icons/trash-fill.svg";
+import {removeToDo} from "../../firebase/firebaseinit";
 
-const ToDoListItem = (props) => {
-    const {todoContent, todoAuthor, todoTags} = props;
+const ToDoListItem = ({todoContent, todoAuthor, todoTags, ...otherProps}) => {
+    console.log({otherProps, id: otherProps.id, val: otherProps.data.val});
     return (
         <li className="list-group-item">
             <div className="todo-indicator bg-warning"/>
@@ -18,8 +19,10 @@ const ToDoListItem = (props) => {
                         </div>
                     </div>
                     <div className="widget-content-left">
-                        <div className="widget-heading">{todoContent}<div
-                            className="badge bg-danger ml-2">Rejected</div>
+                        <div className="widget-heading">{otherProps.data.val}
+                            <div
+                                className="badge bg-danger ml-2">Rejected
+                            </div>
                         </div>
                         <div className="widget-subheading">
                             {todoAuthor}
@@ -29,7 +32,7 @@ const ToDoListItem = (props) => {
                         </div>
                     </div>
                     <div className="ml-auto">
-                        <button className="border-0 btn-transition btn btn-outline-danger">
+                        <button onClick={() => removeToDo(otherProps.id)} className="border-0 btn-transition btn btn-outline-danger">
                             <Trash/>
                         </button>
                     </div>

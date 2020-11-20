@@ -51,33 +51,6 @@ export const createUserProfileDocument = async (userAuth, aditionalData) => {
     return userRef;
 };
 
-export const testFirebase = () => {
-    console.log("inside test function");
-    firestore.collection("users").add({
-        first: "Ada",
-        last: "Lovelace",
-        born: 1815
-    })
-        .then(function (docRef) {
-            console.log("Document written with ID: ", docRef.id);
-        })
-        .catch(function (error) {
-            console.error("Error adding document: ", error);
-        });
-}
-
-export const testFirebaseGet = () => {
-    firestore.collection("todos").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            const d = {
-                id : doc.id,
-                data: doc.data()
-            };
-            console.log(d);
-        });
-    });
-}
-
 export const addToDo = (collectionUUID) => {
     collectionUUID = "QD3xnUNZnRIMB9BtCqSh";
     const t = new Date();
@@ -91,16 +64,13 @@ export const addToDo = (collectionUUID) => {
     });
 };
 
-export const viewToDos = (collectionUUID) => {
-    collectionUUID = "QD3xnUNZnRIMB9BtCqSh";
-    firestore.collection(`todoCollections/${collectionUUID}/todos`)
-        .onSnapshot(function(querySnapshot) {
-            console.log("viewtodos was called");
-            const todos = [];
-            querySnapshot.forEach(function(doc) {
-                todos.push(doc.data().val);
-            });
-            console.log("Current cities in CA: ", todos.join(", "));
-        });
-}
+export const removeToDo = (documentUUID) => {
+    const collectionUUID = "QD3xnUNZnRIMB9BtCqSh";
+    firestore.doc(`todoCollections/${collectionUUID}/todos/${documentUUID}`).delete().then(function() {
+        console.log("Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
 
+
+};

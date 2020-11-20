@@ -13,9 +13,9 @@ const ToDoHeader = () => {
                 className="fa fa-tasks"/>&nbsp;Task Lists
             </div>
             <div className="d-inline-block ml-auto mr-2">
-            <button onClick={addNewTodDo} className="border-0 btn-transition btn btn-outline-success">
-                <Plus height={"1rem"} width={"1rem"} className="p-0 m-0"/>
-            </button>
+                <button onClick={addNewTodDo} className="border-0 btn-transition btn btn-outline-success">
+                    <Plus height={"1rem"} width={"1rem"} className="p-0 m-0"/>
+                </button>
             </div>
         </div>
     );
