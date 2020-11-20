@@ -2,3 +2,24 @@
   color: #858a8e;
   font-size: 0.65rem;
 }
+
+.no-outline {
+  outline: none;
+  border: 0;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.border-bottom-focus:focus {
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid grey;
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.dim-hover-focus:hover, .dim-hover-focus:focus {
+  background-color: rgba(243, 243, 243, 0.65);
+}

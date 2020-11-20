@@ -3,43 +3,37 @@ import './todo-list-item.styles.scss';
 import {ReactComponent as Trash} from "bootstrap-icons/icons/trash-fill.svg";
 import {removeToDo} from "../../firebase/firebaseinit";
 
-const ToDoListItem = ({todoContent, todoAuthor, todoTags, ...otherProps}) => {
-    console.log({otherProps, id: otherProps.id, val: otherProps.data.val});
-    return (
-        <li className="list-group-item">
-            <div className="todo-indicator bg-warning"/>
-            <div className="widget-content p-0">
-                <div className="d-flex align-items-center">
-                    <div className="widget-content-left mr-2">
-                        <div className="custom-checkbox custom-control"><input
-                            className="custom-control-input"
-                            id="exampleCustomCheckbox12" type="checkbox"/><label
-                            className="custom-control-label"
-                            htmlFor="exampleCustomCheckbox12">&nbsp;</label>
-                        </div>
+class ToDoListItem extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            val: props.data.val,
+            id: props.id
+        }
+    }
+
+    render() {
+        return (
+            <div className="d-flex dim-hover-focus my-2">
+                <div className="input-group">
+                    <div className="input-group-text bg-transparent no-outline">
+                        <input className="form-check-input" type="checkbox" value=""
+                               aria-label="Checkbox for following text input"/>
                     </div>
-                    <div className="widget-content-left">
-                        <div className="widget-heading">{otherProps.data.val}
-                            <div
-                                className="badge bg-danger ml-2">Rejected
-                            </div>
-                        </div>
-                        <div className="widget-subheading">
-                            {todoAuthor}
-                            <div className="badge rounded-pill bg-info ml-2">
-                                {todoTags}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="ml-auto">
-                        <button onClick={() => removeToDo(otherProps.id)} className="border-0 btn-transition btn btn-outline-danger">
-                            <Trash/>
-                        </button>
-                    </div>
+                    <input type="text" className="form-control no-outline border-bottom-focus bg-transparent" aria-label="Text input with checkbox" value={this.state.val}/>
                 </div>
+
+                {/*trashcan svg on the right with delete functionality*/}
+                <div className="ml-auto pl-2 d-flex">
+                    <button onClick={() => removeToDo(this.state.id)}
+                            className="border-0 btn-transition btn btn-outline-danger">
+                        <Trash/>
+                    </button>
+                </div>
+
             </div>
-        </li>
-    );
+        );
+    }
 };
 
 export default ToDoListItem;

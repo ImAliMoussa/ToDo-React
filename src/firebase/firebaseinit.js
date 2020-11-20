@@ -66,9 +66,9 @@ export const addToDo = (collectionUUID) => {
 
 export const removeToDo = (documentUUID) => {
     const collectionUUID = "QD3xnUNZnRIMB9BtCqSh";
-    firestore.doc(`todoCollections/${collectionUUID}/todos/${documentUUID}`).delete().then(function() {
+    firestore.doc(`todoCollections/${collectionUUID}/todos/${documentUUID}`).delete().then(function () {
         console.log("Document successfully deleted!");
-    }).catch(function(error) {
+    }).catch(function (error) {
         console.error("Error removing document: ", error);
     });
 

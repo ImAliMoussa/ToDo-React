@@ -25,8 +25,8 @@ class TodoList extends React.Component {
             });
 
         firestore.collection(`todoCollections/${collectionUUID}/todos`)
-            .onSnapshot(function(snapshot) {
-                snapshot.docChanges().forEach(function(change) {
+            .onSnapshot(function (snapshot) {
+                snapshot.docChanges().forEach(function (change) {
                     if (change.type === "added") {
                         console.log("New city: ", change.doc.data());
                     }
@@ -52,12 +52,13 @@ class TodoList extends React.Component {
                     <div className="col-md-8">
                         <div className="card-hover-shadow-2x mb-3 card">
                             <ToDoHeader/>
-                            <div className="scroll-area-sm">
-                                <ul className=" list-group list-group-flush">
+                            <div className="card-body">
+                                <div>
                                     {
-                                        todos.length > 0 ? (todos.map(todo => <ToDoListItem key={todo.id} {...todo} />)) : null
+                                        todos.length > 0 ? (todos.map(todo => <ToDoListItem
+                                            key={todo.id} {...todo} />)) : null
                                     }
-                                </ul>
+                                </div>
                             </div>
                             <ToDoFooter/>
                         </div>
