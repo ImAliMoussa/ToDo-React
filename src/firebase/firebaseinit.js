@@ -54,7 +54,8 @@ export const createUserProfileDocument = async (userAuth, aditionalData) => {
 export const addToDo = (collectionUUID) => {
     collectionUUID = "QD3xnUNZnRIMB9BtCqSh";
     const t = new Date();
-    const str = "new todo " + t.getHours() + ":" + t.getMinutes() + ":" + t.getSeconds()
+    // const str = "new todo " + t.getHours() + ":" + t.getMinutes() + ":" + t.getSeconds()
+    const str = ""
     firestore.collection(`todoCollections/${collectionUUID}/todos`).add({
         val: str
     }).then(ret => {
@@ -71,6 +72,17 @@ export const removeToDo = (documentUUID) => {
     }).catch(function (error) {
         console.error("Error removing document: ", error);
     });
+};
 
-
+export const updateToDo = (documentUUID, newToDoValue) => {
+    const collectionUUID = "QD3xnUNZnRIMB9BtCqSh";
+    firestore.doc(`todoCollections/${collectionUUID}/todos/${documentUUID}`)
+        .update({val: newToDoValue})
+        .then(() => {
+            console.log("Document successfully updated!")
+        })
+        .catch((error) => {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
 };

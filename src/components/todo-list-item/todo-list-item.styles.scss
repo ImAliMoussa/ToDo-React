@@ -6,6 +6,7 @@
 .no-outline {
   outline: none;
   border: 0;
+  border-radius: 0;
   box-shadow: none !important;
   outline: none !important;
 }
@@ -22,4 +23,8 @@
 
 .dim-hover-focus:hover, .dim-hover-focus:focus {
   background-color: rgba(243, 243, 243, 0.65);
+}
+
+.colored-left-border {
+  border-left: 0.2rem solid red;
 }
