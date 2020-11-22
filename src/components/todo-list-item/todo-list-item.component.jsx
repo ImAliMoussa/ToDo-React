@@ -3,6 +3,8 @@ import './todo-list-item.styles.scss';
 import {ReactComponent as Trash} from "bootstrap-icons/icons/trash-fill.svg";
 import {removeToDo, updateToDo} from "../../firebase/firebaseinit";
 
+
+// TODO -> make to do list coloured red or something if user typed something and database hasn't updated yet
 class ToDoListItem extends React.Component {
     constructor(props) {
         super(props);

@@ -1,7 +1,8 @@
 import firebase from "firebase/app";
-import "firebase/database";
 import "firebase/firestore";
 import "firebase/auth";
+
+// TODO -> clean this up and make several files as this is getting bigger and add user authentication
 
 const config = {
     apiKey: "AIzaSyDyuu1P5a6LAcXAh-5vp-0lVDxJhtpekd8",
@@ -20,10 +21,6 @@ firebase.initializeApp(config);
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
-
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({prompt: 'select_account'});
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
 
