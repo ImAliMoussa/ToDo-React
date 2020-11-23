@@ -1,4 +1,4 @@
-import firebase from "./firebaseinit";
+import firebase, {createUserProfileDocument} from "./firebaseinit";
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({prompt: 'select_account'});
@@ -11,6 +11,7 @@ export const signInWithGoogle = () => {
         // The signed-in user info.
         const user = result.user;
         console.log({token, user});
+        createUserProfileDocument(user);
     }).catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;

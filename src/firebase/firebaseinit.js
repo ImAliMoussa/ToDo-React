@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import {logger} from "redux-logger/src";
 
 // TODO -> clean this up and make several files as this is getting bigger and add user authentication
 
@@ -23,28 +24,16 @@ export const firestore = firebase.firestore();
 
 export default firebase;
 
-export const createUserProfileDocument = async (userAuth, aditionalData) => {
+export const createUserProfileDocument = async (userAuth) => {
     if (!userAuth) return;
     const userRef = firestore.doc(`/users/${userAuth.uid}`);
     const snapshot = await userRef.get();
 
     if (!snapshot.exists) {
-        const {displayName, email} = userAuth;
-        const createdAt = new Date();
-
-        try {
-            await userRef.set({
-                displayName,
-                email,
-                createdAt,
-                ...aditionalData
-            });
-        } catch (error) {
-            console.log("Error creating user, ", error.message);
-        }
+        await firestore.doc(`users/${userAuth.uid}`).set({})
+            .then(ret => console.log(ret))
+            .catch(err => console.error(err));
     }
-
-    return userRef;
 };
 
 export const addToDo = (collectionUUID) => {

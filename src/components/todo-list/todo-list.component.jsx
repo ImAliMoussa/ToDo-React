@@ -7,7 +7,7 @@ import {firestore} from "../../firebase/firebaseinit";
 class TodoList extends React.Component {
     state = {
         todos: [],
-        collectionUUID: "PMKr8Bt23gS2f7UiFlmi"
+        collectionUUID: "PcVecRy8QiK2gOnZ68Ng"
     }
 
     unsubscribeFromToDoList = null
@@ -26,6 +26,15 @@ class TodoList extends React.Component {
             });
     };
 
+    selectNewToDoList = (collectionUUID) => {
+        console.log("selecting new to do list", {collectionUUID});
+        this.setState({
+            collectionUUID
+        });
+        this.unsubscribeFromToDoList();
+        this.rerenderToDoList();
+    }
+
     componentDidMount() {
         this.rerenderToDoList();
     }
@@ -41,7 +50,7 @@ class TodoList extends React.Component {
                 <div className="row d-flex justify-content-center">
                     <div className="col-md-8">
                         <div className="card-hover-shadow-2x mb-3 card">
-                            <ToDoHeader collectionUUID={collectionUUID}/>
+                            <ToDoHeader collectionUUID={collectionUUID} selectNewToDoList={this.selectNewToDoList}/>
                             <div className="card-body">
                                 <div>
                                     {
