@@ -6,12 +6,14 @@ import {firestore} from "../../firebase/firebaseinit";
 
 class TodoList extends React.Component {
     state = {
-        todos: []
+        todos: [],
+        collectionUUID: "PMKr8Bt23gS2f7UiFlmi"
     }
 
-    rerenderToDoList = (collectionUUID) => {
-        collectionUUID = "QD3xnUNZnRIMB9BtCqSh";
-        firestore.collection(`todoCollections/${collectionUUID}/todos`)
+    unsubscribeFromToDoList = null
+
+    rerenderToDoList = () => {
+        this.unsubscribeFromToDoList = firestore.collection(`todoCollections/${this.state.collectionUUID}/todos`)
             .onSnapshot((querySnapshot) => {
                 console.log("RerenderToDoList was called");
                 const newToDos = [];
@@ -22,40 +24,29 @@ class TodoList extends React.Component {
                 });
                 this.setState({todos: [...newToDos]});
             });
-
-        firestore.collection(`todoCollections/${collectionUUID}/todos`)
-            .onSnapshot(function (snapshot) {
-                snapshot.docChanges().forEach(function (change) {
-                    if (change.type === "added") {
-                        console.log("New city: ", change.doc.data());
-                    }
-                    if (change.type === "modified") {
-                        console.log("Modified city: ", change.doc.data());
-                    }
-                    if (change.type === "removed") {
-                        console.log("Removed city: ", change.doc.data());
-                    }
-                });
-            });
     };
 
     componentDidMount() {
         this.rerenderToDoList();
     }
 
+    componentWillUnmount() {
+        this.unsubscribeFromToDoList();
+    }
+
     render() {
-        const {todos} = this.state;
+        const {todos, collectionUUID} = this.state;
         return (
             <div className="container my-5">
                 <div className="row d-flex justify-content-center">
                     <div className="col-md-8">
                         <div className="card-hover-shadow-2x mb-3 card">
-                            <ToDoHeader/>
+                            <ToDoHeader collectionUUID={collectionUUID}/>
                             <div className="card-body">
                                 <div>
                                     {
                                         todos.length > 0 ? (todos.map(todo => <ToDoListItem
-                                            key={todo.id} {...todo} />)) : null
+                                            key={todo.id} {...todo} collectionUUID={collectionUUID} />)) : null
                                     }
                                 </div>
                             </div>

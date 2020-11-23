@@ -18,7 +18,6 @@ const config = {
 console.log("hello world");
 
 firebase.initializeApp(config);
-
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
@@ -49,12 +48,18 @@ export const createUserProfileDocument = async (userAuth, aditionalData) => {
 };
 
 export const addToDo = (collectionUUID) => {
-    collectionUUID = "QD3xnUNZnRIMB9BtCqSh";
-    const t = new Date();
-    // const str = "new todo " + t.getHours() + ":" + t.getMinutes() + ":" + t.getSeconds()
-    const str = ""
+    if (!collectionUUID) console.error(collectionUUID, "is null");
+    const dateNow = new Date();
+
+    const priority = 1;
+    const val = ""
+    const creationDate = firebase.firestore.Timestamp.now();
+    const dueDate = creationDate;
     firestore.collection(`todoCollections/${collectionUUID}/todos`).add({
-        val: str
+        val,
+        dueDate,
+        creationDate,
+        priority
     }).then(ret => {
         console.log({ret});
     }).catch(err => {
@@ -71,8 +76,7 @@ export const removeToDo = (documentUUID) => {
     });
 };
 
-export const updateToDo = (documentUUID, newToDoValue) => {
-    const collectionUUID = "QD3xnUNZnRIMB9BtCqSh";
+export const updateToDo = (collectionUUID, documentUUID, newToDoValue) => {
     firestore.doc(`todoCollections/${collectionUUID}/todos/${documentUUID}`)
         .update({val: newToDoValue})
         .then(() => {

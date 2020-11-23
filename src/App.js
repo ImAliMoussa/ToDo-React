@@ -8,10 +8,16 @@ class App extends React.Component {
     state = {
         user: null
     }
-
     unSubscribeFromAuth = null
 
-    componentDidMount = () => {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: null
+        };
+    }
+
+    componentDidMount() {
         this.unSubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
             const {setCurrentUser} = this.props;
             this.setState({

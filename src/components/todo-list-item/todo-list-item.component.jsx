@@ -32,7 +32,7 @@ class ToDoListItem extends React.Component {
     lostFocus = () => {
         const val = this.state.val;
         if (this.state.previousVal !== val) {
-            updateToDo(this.props.id, val);
+            updateToDo(this.props.collectionUUID, this.props.id, val);
             this.setState({
                 previousVal: val
             });
