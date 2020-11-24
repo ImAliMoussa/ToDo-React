@@ -7,15 +7,23 @@ import {firestore} from "../../firebase/firebaseinit";
 class TodoList extends React.Component {
     state = {
         todos: [],
-        collectionUUID: "PcVecRy8QiK2gOnZ68Ng"
+        title: "",
+        users: []
     }
 
     unsubscribeFromToDoList = null
 
     rerenderToDoList = () => {
-        this.unsubscribeFromToDoList = firestore.collection(`todoCollections/${this.state.collectionUUID}/todos`)
+        firestore.doc(`todoCollections/${this.props.collectionUUID}`).get().then(doc => {
+            const {title, users} = doc.data();
+            this.setState({title, users});
+        }).catch(err => {
+            console.error(err);
+        })
+        this.unsubscribeFromToDoList = firestore.collection(`todoCollections/${this.props.collectionUUID}/todos`)
             .onSnapshot((querySnapshot) => {
                 console.log("RerenderToDoList was called");
+                console.log({querySnapshot});
                 const newToDos = [];
                 querySnapshot.forEach(function (doc) {
                     console.log({doc})
@@ -26,15 +34,6 @@ class TodoList extends React.Component {
             });
     };
 
-    selectNewToDoList = (collectionUUID) => {
-        console.log("selecting new to do list", {collectionUUID});
-        this.setState({
-            collectionUUID
-        });
-        this.unsubscribeFromToDoList();
-        this.rerenderToDoList();
-    }
-
     componentDidMount() {
         this.rerenderToDoList();
     }
@@ -44,21 +43,18 @@ class TodoList extends React.Component {
     }
 
     render() {
-        const {todos, collectionUUID} = this.state;
+        const {todos, title} = this.state;
+        const {collectionUUID} = this.props;
         return (
-            <div className="container my-5">
-                <div className="row d-flex justify-content-center">
-                    <div className="col-md-8">
-                        <div className="card-hover-shadow-2x mb-3 card">
-                            <ToDoHeader collectionUUID={collectionUUID} selectNewToDoList={this.selectNewToDoList}/>
-                            <div className="card-body">
-                                <div>
-                                    {
-                                        todos.length > 0 ? (todos.map(todo => <ToDoListItem
-                                            key={todo.id} {...todo} collectionUUID={collectionUUID} />)) : null
-                                    }
-                                </div>
-                            </div>
+            <div className="col-12 col-sm-6 col-md-4">
+                <div className="card-hover-shadow-2x mb-3 card">
+                    <ToDoHeader title={title} collectionUUID={collectionUUID}/>
+                    <div className="card-body">
+                        <div>
+                            {
+                                todos.length > 0 ? (todos.map(todo => <ToDoListItem
+                                    key={todo.id} {...todo} collectionUUID={collectionUUID}/>)) : null
+                            }
                         </div>
                     </div>
                 </div>

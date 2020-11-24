@@ -4,8 +4,6 @@ import {ReactComponent as Logo} from "bootstrap-icons/icons/check2-square.svg";
 import AvatarWithDropdown from "../navbar-avatar-with-dropdown/navbar-avatar-with-dropdown.component";
 
 const Navbar = ({user}) => {
-    console.log({user});
-    if (user) console.log({id: user.uid});
     return (
         <nav className="navbar navbar-light bg-light p-0 shadow">
             <div className="container">

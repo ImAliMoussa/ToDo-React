@@ -1,7 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
-import {logger} from "redux-logger/src";
 
 // TODO -> clean this up and make several files as this is getting bigger and add user authentication
 
