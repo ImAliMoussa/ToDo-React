@@ -16,7 +16,7 @@ const ToDoListCreator = () => {
     }
 
     return (
-        <div className="col-10 col-md-6 bg-light dim-hover-focus d-flex p-2 rounded mx-auto border-success">
+        <div className="col-10 col-md-6 col-lg-4 bg-light dim-hover-focus d-flex p-2 rounded mx-auto border-success">
             <div className="input-group">
                 <input type="text" className="form-control no-outline border-bottom-focus bg-transparent"
                        aria-label="Text input with checkbox" name="val" value={title} placeholder="Enter New To Do List Title" onChange={onChange}/>

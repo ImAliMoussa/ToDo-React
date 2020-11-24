@@ -19,25 +19,32 @@ class App extends React.Component {
             this.setState({
                 user: userAuth
             });
-            this.unsubscribeFromToDoLists = firestore.collection(`users/${userAuth.uid}/todos`)
-                .onSnapshot((querySnapshot) => {
-                    const newToDoLists = [];
-                    querySnapshot.forEach((doc) => {
-                        console.log({id: doc.id});
-                        console.log({data: doc.data()});
-                        if (doc.exists)
-                            newToDoLists.push(doc.id);
+            if (userAuth) {
+                this.unsubscribeFromToDoLists = firestore.collection(`users/${userAuth.uid}/todos`)
+                    .onSnapshot((querySnapshot) => {
+                        const newToDoLists = [];
+                        querySnapshot.forEach((doc) => {
+                            console.log({id: doc.id});
+                            console.log({data: doc.data()});
+                            if (doc.exists)
+                                newToDoLists.push(doc.id);
+                        });
+                        this.setState({userToDoLists: [...newToDoLists]});
                     });
-                    this.setState({userToDoLists: [...newToDoLists]});
+            } else {
+                // this is probably bad I should redirect user to home page
+                this.setState({
+                    userToDoLists: []
                 });
+                this.unsubscribeFromToDoLists && this.unsubscribeFromToDoLists();
+            }
         });
     }
 
     componentWillUnmount() {
-        if (this.unSubscribeFromAuth) {
-            this.unSubscribeFromAuth();
-            this.unsubscribeFromToDoLists();
-        }
+        this.unSubscribeFromAuth && this.unSubscribeFromAuth();
+        this.unsubscribeFromToDoLists && this.unsubscribeFromToDoLists();
+
     }
 
     render() {
@@ -46,13 +53,14 @@ class App extends React.Component {
             <>
                 <Navbar user={this.state.user}/>
                 {/*<Clock/>*/}
-                <div className="container mt-5">
+                <div className="container-fluid mt-5">
                     <div className="row mb-5">
-                        <ToDoListCreator />
+                        <ToDoListCreator/>
                     </div>
                     <div className="row">
                         {
-                            userToDoLists.length > 0 && userToDoLists.map(collectionUUID => <TodoList key={collectionUUID} collectionUUID={collectionUUID}/>)
+                            userToDoLists.length > 0 && userToDoLists.map(collectionUUID => <TodoList
+                                key={collectionUUID} collectionUUID={collectionUUID}/>)
                         }
                     </div>
                 </div>
