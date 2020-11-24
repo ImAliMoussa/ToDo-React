@@ -1,12 +1,13 @@
 import firebase, {firestore} from "./firebaseinit";
 
-export const createNewToDoList = async () => {
+export const createNewToDoList = async (title) => {
     const user = firebase.auth().currentUser;
     console.log(user);
     if (!user) return;
     let retVal = null;
     await firestore.collection('todoCollections').add({
-        users: user.uid
+        users: user.uid,
+        title
     }).then(async ret => {
         const {id} = ret;
         console.log({ret});

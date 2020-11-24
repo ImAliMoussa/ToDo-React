@@ -46,7 +46,7 @@ class TodoList extends React.Component {
         const {todos, title} = this.state;
         const {collectionUUID} = this.props;
         return (
-            <div className="col-12 col-sm-6 col-md-4">
+            <div className="col-12 col-sm-6 col-md-4 mx-auto">
                 <div className="card-hover-shadow-2x mb-3 card">
                     <ToDoHeader title={title} collectionUUID={collectionUUID}/>
                     <div className="card-body">

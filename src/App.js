@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from "./components/navbar/navbar.component";
 import TodoList from "./components/todo-list/todo-list.component";
 import {auth, firestore} from "./firebase/firebaseinit";
+import ToDoListCreator from "./components/todo-list-creator/todo-list-creator.component";
 
 class App extends React.Component {
     state = {
@@ -46,6 +47,9 @@ class App extends React.Component {
                 <Navbar user={this.state.user}/>
                 {/*<Clock/>*/}
                 <div className="container mt-5">
+                    <div className="row mb-5">
+                        <ToDoListCreator />
+                    </div>
                     <div className="row">
                         {
                             userToDoLists.length > 0 && userToDoLists.map(collectionUUID => <TodoList key={collectionUUID} collectionUUID={collectionUUID}/>)
