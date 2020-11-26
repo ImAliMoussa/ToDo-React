@@ -51,6 +51,7 @@ class ToDoListItem extends React.Component {
                                aria-label="Checkbox for following text input" onChange={this.handleInputChange}/>
                     </div>
                     <input type="text" className="form-control no-outline border-bottom-focus bg-transparent"
+                           autoComplete="off"
                            aria-label="Text input with checkbox" name="val" value={this.state.val}
                            onChange={this.handleInputChange} id={this.props.id} onBlur={this.lostFocus}/>
                 </div>

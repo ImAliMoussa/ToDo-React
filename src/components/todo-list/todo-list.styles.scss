@@ -32,3 +32,8 @@
   opacity: .6;
   transition: opacity .2s
 }
+
+.max-card-height {
+  height: 200px;
+  overflow: scroll;
+}
