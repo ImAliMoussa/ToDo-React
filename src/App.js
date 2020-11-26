@@ -53,7 +53,7 @@ class App extends React.Component {
             <>
                 <Navbar user={this.state.user}/>
                 {/*<Clock/>*/}
-                <div className="container-fluid mt-5">
+                <div className="container-fluid my-5">
                     <div className="row mb-5">
                         <ToDoListCreator/>
                     </div>

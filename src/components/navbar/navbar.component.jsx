@@ -5,7 +5,7 @@ import AvatarWithDropdown from "../navbar-avatar-with-dropdown/navbar-avatar-wit
 
 const Navbar = ({user}) => {
     return (
-        <nav className="navbar navbar-light bg-light p-0 shadow">
+        <nav className="navbar navbar-light bg-light p-0 shadow-sm small-outline">
             <div className="container">
                 <a className="navbar-brand" href="#">
                     <Logo className="icon d-inline-block mr-1"/>

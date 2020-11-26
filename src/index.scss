@@ -12,5 +12,10 @@ body {
   color: #495057;
   text-align: left;
   //background-color: #6200EA
-  background-color: black;
+  //background-color: black;
+}
+
+.small-outline {
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  border-radius: 3px;
 }
