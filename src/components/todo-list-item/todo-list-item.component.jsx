@@ -40,6 +40,9 @@ class ToDoListItem extends React.Component {
     }
 
     render() {
+        const {collectionUUID} = this.props;
+        const {id} = this.props;
+        console.log({collectionUUID, id});
         return (
             <div className="d-flex dim-hover-focus my-1 py-1">
                 <div className="input-group">
@@ -54,7 +57,7 @@ class ToDoListItem extends React.Component {
 
                 {/*trashcan svg on the right with delete functionality*/}
                 <div className="ml-auto pl-2 d-flex">
-                    <button onClick={() => removeToDo(this.state.id)}
+                    <button onClick={() => removeToDo(id, collectionUUID)}
                             className="border-0 btn-transition btn btn-outline-danger">
                         <Trash/>
                     </button>
