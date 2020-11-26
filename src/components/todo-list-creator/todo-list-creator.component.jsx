@@ -22,7 +22,6 @@ const ToDoListCreator = () => {
         }
     }
 
-
     return (
         <div className="col-10 col-md-6 col-lg-4 shadow-sm dim-hover-focus d-flex p-2 rounded mx-auto small-outline">
             <div className="input-group">

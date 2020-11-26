@@ -27,11 +27,11 @@ class App extends React.Component {
                             console.log({id: doc.id});
                             console.log({data: doc.data()});
                             if (doc.exists)
-                                newToDoLists.push(doc.id);
+                                newToDoLists.push({collectionUUID: doc.id, creationDate: doc.data().creationDate});
                         });
-                        // newToDoLists.sort((a, b) => {
-                        //     return b.creationDate
-                        // })
+                        newToDoLists.sort((a, b) => {
+                            return b.creationDate - a.creationDate
+                        })
                         this.setState({userToDoLists: [...newToDoLists]});
                     });
             } else {
@@ -62,7 +62,7 @@ class App extends React.Component {
                     </div>
                     <div className="row">
                         {
-                            userToDoLists.length > 0 && userToDoLists.map(collectionUUID => <TodoList
+                            userToDoLists.length > 0 && userToDoLists.map(({collectionUUID}) => <TodoList
                                 key={collectionUUID} collectionUUID={collectionUUID}/>)
                         }
                     </div>

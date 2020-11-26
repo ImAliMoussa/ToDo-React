@@ -14,7 +14,9 @@ export const createNewToDoList = async (title) => {
         const {id} = ret;
         console.log({ret});
         console.log({id});
-        await firestore.doc(`users/${user.uid}/todos/${id}`).set({}).then(ret => {
+        await firestore.doc(`users/${user.uid}/todos/${id}`).set({
+            creationDate
+        }).then(ret => {
             console.log("successfully added todolist to user");
             console.log({id});
             retVal = id;
