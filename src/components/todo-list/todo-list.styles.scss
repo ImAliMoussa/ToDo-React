@@ -34,6 +34,11 @@
 }
 
 .max-card-height {
-  height: 200px;
-  overflow: scroll;
+  height: 13.9rem;
+  overflow-y: scroll;
+}
+
+.max-card-height::-webkit-scrollbar {
+  //right: 0;
+  //padding: 0.5rem;
 }
