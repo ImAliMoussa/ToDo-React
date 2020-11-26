@@ -5,9 +5,11 @@ export const createNewToDoList = async (title) => {
     console.log(user);
     if (!user) return;
     let retVal = null;
+    const creationDate = firebase.firestore.Timestamp.now();
     await firestore.collection('todoCollections').add({
         users: user.uid,
-        title
+        title,
+        creationDate
     }).then(async ret => {
         const {id} = ret;
         console.log({ret});

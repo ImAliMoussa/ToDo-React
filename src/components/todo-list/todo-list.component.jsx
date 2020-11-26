@@ -25,13 +25,13 @@ class TodoList extends React.Component {
                 console.log("RerenderToDoList was called");
                 console.log({querySnapshot});
                 const newToDos = [];
-                querySnapshot.forEach(function (doc) {
+                querySnapshot.forEach( (doc) => {
                     console.log({doc, data: doc.data()})
                     if (doc.exists)
                         newToDos.push({id: doc.id, data: doc.data()});
                 });
                 newToDos.sort((a, b) => {
-                    return  b.data.creationDate.toDate() - a.data.creationDate.toDate()
+                    return b.data.creationDate.toDate() - a.data.creationDate.toDate()
                 });
                 this.setState({todos: [...newToDos]});
             });

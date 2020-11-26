@@ -29,6 +29,9 @@ class App extends React.Component {
                             if (doc.exists)
                                 newToDoLists.push(doc.id);
                         });
+                        // newToDoLists.sort((a, b) => {
+                        //     return b.creationDate
+                        // })
                         this.setState({userToDoLists: [...newToDoLists]});
                     });
             } else {
