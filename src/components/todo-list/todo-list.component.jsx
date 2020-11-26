@@ -31,7 +31,7 @@ class TodoList extends React.Component {
                         newToDos.push({id: doc.id, data: doc.data()});
                 });
                 newToDos.sort((a, b) => {
-                    return a.data.creationDate.toDate() - b.data.creationDate.toDate()
+                    return  b.data.creationDate.toDate() - a.data.creationDate.toDate()
                 });
                 this.setState({todos: [...newToDos]});
             });
