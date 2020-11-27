@@ -5,10 +5,14 @@ import "bootstrap/scss/bootstrap.scss";
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter} from "react-router-dom/";
+import WelcomePage from "./pages/welcome-page/welcome-page.component";
 
 ReactDOM.render(
     <React.StrictMode>
-        <App/>
+        <BrowserRouter>
+            <WelcomePage/>
+        </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
 );

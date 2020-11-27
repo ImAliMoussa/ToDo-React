@@ -1,0 +1,53 @@
+.welcome-modal {
+  filter: none;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 5px;
+  color: #333;
+  font-family: sans-serif;
+  line-height: 1.5;
+  padding: 1rem 2rem;
+
+  a {
+    color: #bf0222;
+  }
+
+  input, input:focus, input:active {
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid black;
+  }
+
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .welcome-modal {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  .warning {
+    display: none;
+  }
+}
+
+body {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.welcome-page-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.grayscale {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}

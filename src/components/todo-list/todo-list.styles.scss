@@ -34,11 +34,7 @@
 }
 
 .max-card-height {
+  // i wanted part of hidden to do to show so user knows he can scroll, kind of a hack :(
   height: 13.9rem;
   overflow-y: scroll;
-}
-
-.max-card-height::-webkit-scrollbar {
-  //right: 0;
-  //padding: 0.5rem;
 }
