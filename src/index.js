@@ -6,12 +6,12 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom/";
-import WelcomePage from "./pages/welcome-page/welcome-page.component";
+import SignInPage from "./pages/sign-in-page/signin-page.component";
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <WelcomePage/>
+            <SignInPage/>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')

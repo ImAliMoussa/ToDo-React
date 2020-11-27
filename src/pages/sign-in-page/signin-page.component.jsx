@@ -1,10 +1,9 @@
 import React from 'react';
-import './welcome-page.styles.scss';
-import GoogleButton from "react-google-button";
+import './signin-page.styles.scss';
 import BACKGROUND from '../../imgs/homebg3.jpg'
 import {ReactComponent as Logo} from "bootstrap-icons/icons/card-list.svg";
 
-const WelcomePage = () => {
+const SignInPage = () => {
     return (
         <>
             <div className="welcome-page-container grayscale"
@@ -17,8 +16,8 @@ const WelcomePage = () => {
                                 <div className="card-body">
                                     <form className="form-signin">
                                         <div className="row "><Logo className="col" height={"4rem"} width={"4rem"}
-                                                                    style={{color: "#333"}}/></div>
-                                        <h5 className="text-center" style={{color: "#333"}}>Sign in to ToDo-est</h5>
+                                        /></div>
+                                        <h5 className="text-center">Sign in to ToDo-est</h5>
                                         <hr className="my-4"/>
 
                                         <div className="form-label-group">
@@ -33,13 +32,7 @@ const WelcomePage = () => {
                                             <input type="password" id="inputPassword" className="form-control"
                                                    required/>
                                         </div>
-                                        <br className="my-4"/>
 
-                                        <button className="btn btn-primary btn-block"
-                                                type="submit">Sign in
-                                        </button>
-                                        <hr className="my-4"/>
-                                        <GoogleButton/>
                                     </form>
                                 </div>
                             </div>
@@ -52,4 +45,4 @@ const WelcomePage = () => {
     );
 }
 
-export default WelcomePage;
+export default SignInPage;

@@ -20,8 +20,15 @@
     border-bottom: 1px solid black;
   }
 
+  // chrome does auto fill with a weird background color, can't make it transparent so white does the job
+  // https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
 }
-
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .welcome-modal {
     -webkit-backdrop-filter: blur(10px);
