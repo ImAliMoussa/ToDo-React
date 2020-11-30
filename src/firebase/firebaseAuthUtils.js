@@ -24,6 +24,33 @@ export const signInWithGoogle = () => {
     });
 };
 
+export const signInWithEmail = (email, password) => {
+    console.log("sign in with email");
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userAuth) => {
+            console.log("user successfully signed in", userAuth);
+        })
+        .catch((error) => {
+            const {message, code} = error;
+            console.error({code, message});
+        });
+};
+
+export const signUpWithEmail = (fullName, email, password) => {
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userAuth) => {
+            // Signed in
+            createUserProfileDocument(userAuth.user, fullName);
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+            console.error({errorCode, errorMessage});
+        });
+
+}
+
 export const signOut = () => {
     firebase.auth().signOut().then(() => {
         // Sign-out successful.

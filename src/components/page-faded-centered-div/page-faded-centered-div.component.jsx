@@ -1,9 +1,14 @@
 import React from 'react';
-import './signin-page.styles.scss';
+import './page-faded-centered-div.styles.scss';
 import BACKGROUND from '../../imgs/homebg3.jpg'
 import {ReactComponent as Logo} from "bootstrap-icons/icons/card-list.svg";
 
-const SignInPage = () => {
+const FadedDiv = (props) => {
+    const {title, children, onSubmit} = props;
+    const onFormSubmit = (e) => {
+        e.preventDefault();
+        onSubmit();
+    }
     return (
         <>
             <div className="welcome-page-container grayscale"
@@ -14,35 +19,23 @@ const SignInPage = () => {
                         <div className="col-12 col-md-8 col-lg-5 mx-auto d-flex flex-column">
                             <div className="welcome-modal shadow">
                                 <div className="card-body">
-                                    <form className="form-signin">
+                                    <form className="form-signin" onSubmit={onFormSubmit}>
                                         <div className="row "><Logo className="col" height={"4rem"} width={"4rem"}
                                         /></div>
-                                        <h5 className="text-center">Sign in to ToDo-est</h5>
+                                        <h5 className="text-center">{title}</h5>
                                         <hr className="my-4"/>
-
-                                        <div className="form-label-group">
-                                            <label htmlFor="inputEmail" className="text-sm-left">Email address</label>
-                                            <input type="email" id="inputEmail" className="form-control"
-                                                   required autoFocus/>
-                                        </div>
-                                        <br className="my-4"/>
-
-                                        <div className="form-label-group">
-                                            <label htmlFor="inputPassword">Password</label>
-                                            <input type="password" id="inputPassword" className="form-control"
-                                                   required/>
-                                        </div>
-
+                                        {
+                                            children
+                                        }
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </>
     );
 }
 
-export default SignInPage;
+export default FadedDiv;

@@ -25,7 +25,7 @@ class TodoList extends React.Component {
                 console.log("RerenderToDoList was called");
                 console.log({querySnapshot});
                 const newToDos = [];
-                querySnapshot.forEach( (doc) => {
+                querySnapshot.forEach((doc) => {
                     console.log({doc, data: doc.data()})
                     if (doc.exists)
                         newToDos.push({id: doc.id, data: doc.data()});

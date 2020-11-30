@@ -15,21 +15,21 @@ const config = {
     measurementId: "G-YYPQPH5ESS"
 };
 
-console.log("hello world");
-
 firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 export default firebase;
 
-export const createUserProfileDocument = async (userAuth) => {
+export const createUserProfileDocument = async (userAuth, fullName) => {
     if (!userAuth) return;
     const userRef = firestore.doc(`/users/${userAuth.uid}`);
     const snapshot = await userRef.get();
-
+    console.log(userAuth);
     if (!snapshot.exists) {
-        await firestore.doc(`users/${userAuth.uid}`).set({})
+        await firestore.doc(`users/${userAuth.uid}`).set({
+            fullName
+        })
             .then(ret => console.log(ret))
             .catch(err => console.error(err));
     }
