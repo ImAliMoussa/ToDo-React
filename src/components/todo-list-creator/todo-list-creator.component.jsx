@@ -15,11 +15,10 @@ const ToDoListCreator = () => {
     }
 
     const userCreatedNewToDoList = (e) => {
-        // if user pressed enter to do list is created
-        if (e.keyCode === ENTER_KEY) {
-            createNewToDoList(title);
-            setTitle("");
-        }
+        // if user pressexd enter to do list is created
+        if (e.type === "keydown" && e.keyCode !== ENTER_KEY) return;
+        createNewToDoList(title);
+        setTitle("");
     }
 
     return (
@@ -30,9 +29,9 @@ const ToDoListCreator = () => {
                        aria-label="Text input with checkbox" name="val" value={title}
                        placeholder="Enter New To Do List Title" onChange={onChange} onKeyDown={userCreatedNewToDoList}/>
             </div>
-            <div className="ml-auto pl-2 d-flex">
-                <button className="border-0 btn-transition btn btn-outline-success" onClick={userCreatedNewToDoList}>
-                    <AddLogo/>
+            <div className="ml-auto pl-2 d-flex" onClick={userCreatedNewToDoList}>
+                <button className="border-0 btn-transition btn btn-outline-success">
+                    <AddLogo name="creator"/>
                 </button>
             </div>
         </div>

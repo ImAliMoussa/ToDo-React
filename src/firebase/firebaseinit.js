@@ -37,7 +37,6 @@ export const createUserProfileDocument = async (userAuth, fullName) => {
 
 export const addToDo = (collectionUUID) => {
     if (!collectionUUID) console.error(collectionUUID, "is null");
-    const dateNow = new Date();
 
     const priority = 1;
     const val = ""

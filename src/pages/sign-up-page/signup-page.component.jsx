@@ -3,6 +3,8 @@ import './signup-page.styles.scss';
 import FadedDiv from "../../components/page-faded-centered-div/page-faded-centered-div.component";
 import {signUpWithEmail} from "../../firebase/firebaseAuthUtils";
 import FormWithLogo from "../../components/form-with-logo/form-with-logo.component";
+import {auth} from "../../firebase/firebaseinit";
+import {Redirect} from "react-router-dom";
 
 class SignUpPage extends React.Component {
     // sign in page content, added as props.children to FadedDiv component
@@ -27,6 +29,9 @@ class SignUpPage extends React.Component {
     }
 
     render() {
+        const user = auth.currentUser;
+        if (user) return <Redirect to='/app' />
+
         const {fullName, email, password} = this.state;
         const signUpContent =
             <>

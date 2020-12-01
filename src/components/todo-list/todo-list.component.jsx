@@ -22,11 +22,11 @@ class TodoList extends React.Component {
         })
         this.unsubscribeFromToDoList = firestore.collection(`todoCollections/${this.props.collectionUUID}/todos`)
             .onSnapshot((querySnapshot) => {
-                console.log("RerenderToDoList was called");
-                console.log({querySnapshot});
+                // console.log("RerenderToDoList was called");
+                // console.log({querySnapshot});
                 const newToDos = [];
                 querySnapshot.forEach((doc) => {
-                    console.log({doc, data: doc.data()})
+                    // console.log({doc, data: doc.data()})
                     if (doc.exists)
                         newToDos.push({id: doc.id, data: doc.data()});
                 });

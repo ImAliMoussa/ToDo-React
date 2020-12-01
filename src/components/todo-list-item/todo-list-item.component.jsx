@@ -42,7 +42,6 @@ class ToDoListItem extends React.Component {
     render() {
         const {collectionUUID} = this.props;
         const {id} = this.props;
-        console.log({collectionUUID, id});
         return (
             <div className="d-flex dim-hover-focus my-1 py-1">
                 <div className="input-group">

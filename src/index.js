@@ -5,15 +5,12 @@ import "bootstrap/scss/bootstrap.scss";
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom/";
-import SignInPage from "./pages/sign-up-page/signup-page.component";
-import SignIn from "./pages/sign-in-page/sign-in.component";
-import SignUpPage from "./pages/sign-up-page/signup-page.component";
-import WelcomePage from "./pages/welcome-page/welcome-page.component";
+import AppRouting from "./app-routing";
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <WelcomePage/>
+            <AppRouting/>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')

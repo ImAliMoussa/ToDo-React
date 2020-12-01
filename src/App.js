@@ -7,54 +7,38 @@ import ToDoListCreator from "./components/todo-list-creator/todo-list-creator.co
 
 class App extends React.Component {
     state = {
-        user: null,
         userToDoLists: []
     }
 
-    unSubscribeFromAuth = null
     unsubscribeFromToDoLists = null
 
     componentDidMount() {
-        this.unSubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-            this.setState({
-                user: userAuth
-            });
-            if (userAuth) {
-                this.unsubscribeFromToDoLists = firestore.collection(`users/${userAuth.uid}/todos`)
-                    .onSnapshot((querySnapshot) => {
-                        const newToDoLists = [];
-                        querySnapshot.forEach((doc) => {
-                            console.log({id: doc.id});
-                            console.log({data: doc.data()});
-                            if (doc.exists)
-                                newToDoLists.push({collectionUUID: doc.id, creationDate: doc.data().creationDate});
-                        });
-                        newToDoLists.sort((a, b) => {
-                            return b.creationDate - a.creationDate
-                        })
-                        this.setState({userToDoLists: [...newToDoLists]});
-                    });
-            } else {
-                // this is probably bad I should redirect user to home page
-                this.setState({
-                    userToDoLists: []
+        const user = auth.currentUser;
+        this.unsubscribeFromToDoLists = firestore.collection(`users/${user.uid}/todos`)
+            .onSnapshot((querySnapshot) => {
+                const newToDoLists = [];
+                querySnapshot.forEach((doc) => {
+                    // console.log({id: doc.id});
+                    // console.log({data: doc.data()});
+                    if (doc.exists)
+                        newToDoLists.push({collectionUUID: doc.id, creationDate: doc.data().creationDate});
                 });
-                this.unsubscribeFromToDoLists && this.unsubscribeFromToDoLists();
-            }
-        });
+                newToDoLists.sort((a, b) => {
+                    return b.creationDate - a.creationDate
+                })
+                this.setState({userToDoLists: [...newToDoLists]});
+            });
     }
 
     componentWillUnmount() {
-        this.unSubscribeFromAuth && this.unSubscribeFromAuth();
         this.unsubscribeFromToDoLists && this.unsubscribeFromToDoLists();
-
     }
 
     render() {
         const {userToDoLists} = this.state;
         return (
             <>
-                <Navbar user={this.state.user}/>
+                <Navbar/>
                 {/*<Clock/>*/}
                 <div className="container-fluid my-5">
                     <div className="row mb-5">
