@@ -6,13 +6,14 @@ import './index.scss';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom/";
 import SignInPage from "./pages/sign-up-page/signup-page.component";
-import SignInSignUp from "./pages/sign-in-sign-up/sign-in-sign-up.component";
+import SignIn from "./pages/sign-in-page/sign-in.component";
 import SignUpPage from "./pages/sign-up-page/signup-page.component";
+import WelcomePage from "./pages/welcome-page/welcome-page.component";
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <SignUpPage/>
+            <WelcomePage/>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
