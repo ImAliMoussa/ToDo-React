@@ -27,7 +27,7 @@ const ToDoListCreator = () => {
                 <input type="text" className="form-control no-outline border-bottom-focus bg-transparent"
                        autoComplete="off"
                        aria-label="Text input with checkbox" name="val" value={title}
-                       placeholder="Enter New To Do List Title" onChange={onChange} onKeyDown={userCreatedNewToDoList}/>
+                       placeholder="Create a new list" onChange={onChange} onKeyDown={userCreatedNewToDoList}/>
             </div>
             <div className="ml-auto pl-2 d-flex" onClick={userCreatedNewToDoList}>
                 <button className="border-0 btn-transition btn btn-outline-success">

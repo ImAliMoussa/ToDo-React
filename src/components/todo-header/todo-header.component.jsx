@@ -6,8 +6,7 @@ import {addToDo} from "../../firebase/firebaseinit";
 const ToDoHeader = ({collectionUUID, title}) => {
     return (
         <div className="card-header-tab card-header">
-            <div className="card-header-title font-size-lg text-capitalize font-weight-normal"><i
-                className="fa fa-tasks"/>&nbsp;{title}
+            <div className="d-inline-block card-header-title font-size-lg text-capitalize font-weight-normal hidden-text-custom">{title}
             </div>
             <div className="d-inline-block ml-auto mr-2">
                 <button onClick={() => addToDo(collectionUUID)}

@@ -29,3 +29,9 @@
   align-items: center;
   white-space: nowrap
 }
+
+.hidden-text-custom {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
