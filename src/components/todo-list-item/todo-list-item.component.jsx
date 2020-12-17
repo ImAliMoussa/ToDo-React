@@ -1,8 +1,8 @@
 import React from 'react';
 import './todo-list-item.styles.scss';
+import Textarea from 'react-expanding-textarea';
 import {ReactComponent as Trash} from "bootstrap-icons/icons/trash-fill.svg";
 import {removeToDo, updateToDo} from "../../firebase/firebaseinit";
-
 
 // TODO -> make to do list coloured red or something if user typed something and database hasn't updated yet
 class ToDoListItem extends React.Component {
@@ -49,10 +49,11 @@ class ToDoListItem extends React.Component {
                         <input className="form-check-input" type="checkbox" value=""
                                aria-label="Checkbox for following text input" onChange={this.handleInputChange}/>
                     </div>
-                    <input type="text" className="form-control no-outline border-bottom-focus bg-transparent"
+                    <Textarea type="text" className="form-control no-outline border-bottom-focus bg-transparent"
                            autoComplete="off"
                            aria-label="Text input with checkbox" name="val" value={this.state.val}
-                           onChange={this.handleInputChange} id={this.props.id} onBlur={this.lostFocus}/>
+                           onChange={this.handleInputChange} id={this.props.id} onBlur={this.lostFocus} />
+
                 </div>
 
                 {/*trashcan svg on the right with delete functionality*/}
