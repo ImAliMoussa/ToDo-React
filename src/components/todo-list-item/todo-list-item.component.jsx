@@ -9,8 +9,8 @@ class ToDoListItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            val: props.data.val,
-            previousVal: props.data.val,
+            val: props.val,
+            previousVal: props.val,
             id: props.id,
         }
     }

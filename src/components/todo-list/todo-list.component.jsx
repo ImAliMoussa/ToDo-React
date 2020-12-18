@@ -56,7 +56,7 @@ class TodoList extends React.Component {
                         <div className="max-card-height">
                             {
                                 todos.length > 0 ? (todos.map(todo => <ToDoListItem
-                                    key={todo.id} {...todo} collectionUUID={collectionUUID}/>)) : null
+                                    key={todo.id} id={todo.id} {...todo.data} collectionUUID={collectionUUID}/>)) : null
                             }
                         </div>
                     </div>
