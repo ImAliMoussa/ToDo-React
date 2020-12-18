@@ -14,8 +14,10 @@ class App extends React.Component {
 
     componentDidMount() {
         const user = auth.currentUser;
+        console.log({user})
         this.unsubscribeFromToDoLists = firestore.collection(`users/${user.uid}/todos`)
             .onSnapshot((querySnapshot) => {
+                console.log("on snapshot");
                 const newToDoLists = [];
                 querySnapshot.forEach((doc) => {
                     // console.log({id: doc.id});
@@ -27,6 +29,8 @@ class App extends React.Component {
                     return b.creationDate - a.creationDate
                 })
                 this.setState({userToDoLists: [...newToDoLists]});
+            }, error => {
+                console.log("error occurred", {error})
             });
     }
 

@@ -4,8 +4,6 @@ import GoogleButton from "react-google-button";
 import './sign-in.styles.scss';
 import {signInWithEmail, signInWithGoogle} from "../../firebase/firebaseAuthUtils";
 import FormWithLogo from "../../components/form-with-logo/form-with-logo.component";
-import {auth} from "../../firebase/firebaseinit";
-import {Redirect} from "react-router-dom";
 
 class SignIn extends React.Component {
     SIGN_IN_EMAIL = "SIGN_IN_EMAIL";

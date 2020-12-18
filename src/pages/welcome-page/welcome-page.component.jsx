@@ -7,7 +7,7 @@ const WelcomePage = () => {
     const pageContent = <>
         <div className="d-flex">
             <Link to="/signin" className="btn btn-block btn-lg btn-dark d-block">
-               Sign In
+                Sign In
             </Link>
         </div>
         <br/>

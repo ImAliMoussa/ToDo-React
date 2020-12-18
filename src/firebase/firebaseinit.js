@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 
-// TODO -> clean this up and make several files as this is getting bigger and add user authentication
+// TODO -> clean this up and make several files as this is getting bigger
 
 const config = {
     apiKey: "AIzaSyDyuu1P5a6LAcXAh-5vp-0lVDxJhtpekd8",

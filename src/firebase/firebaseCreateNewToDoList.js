@@ -9,13 +9,13 @@ export const createNewToDoList = async (title) => {
     await firestore.collection('todoCollections').add({
         users: user.uid,
         title,
-        creationDate
+        creationDate,
     }).then(async ret => {
         const {id} = ret;
         console.log({ret});
         console.log({id});
         await firestore.doc(`users/${user.uid}/todos/${id}`).set({
-            creationDate
+            creationDate,
         }).then(ret => {
             console.log("successfully added todolist to user");
             console.log({id});

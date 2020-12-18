@@ -30,7 +30,7 @@ class SignUpPage extends React.Component {
 
     render() {
         const user = auth.currentUser;
-        if (user) return <Redirect to='/app' />
+        if (user) return <Redirect to='/app'/>
 
         const {fullName, email, password} = this.state;
         const signUpContent =
@@ -56,11 +56,13 @@ class SignUpPage extends React.Component {
                 </div>
                 <br/>
                 <div className="d-flex">
-                    <button onClick={this.handleSubmit} className="btn btn-block btn-lg btn-dark d-block mx-auto">Sign Up</button>
+                    <button onClick={this.handleSubmit} className="btn btn-block btn-lg btn-dark d-block mx-auto">Sign
+                        Up
+                    </button>
                 </div>
             </>;
 
-            const content = <FormWithLogo title="Sign Up" children={signUpContent} />
+        const content = <FormWithLogo title="Sign Up" children={signUpContent}/>
 
         return (
             <FadedDiv title="Sign Up" children={content}/>

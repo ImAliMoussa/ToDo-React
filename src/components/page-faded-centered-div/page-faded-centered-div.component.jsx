@@ -6,7 +6,12 @@ const FadedDiv = ({children}) => {
     return (
         <>
             <div className="welcome-page-container grayscale"
-                 style={{position: "absolute", backgroundImage: `url(${BACKGROUND})`}}/>
+                 style={{
+                     position: "absolute",
+                     backgroundImage: `url(${BACKGROUND})`,
+                     backgroundPosition: "center",
+                     backgroundAttachment: "fixed"
+                 }}/>
             <div className="welcome-page-container">
                 <div className="container">
                     <div className="row">

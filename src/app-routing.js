@@ -30,10 +30,10 @@ class AppRouting extends React.Component {
         const {user} = this.state;
         return (
             <Switch>
-                <PublicRoute user={user} exact path='/' component={WelcomePage} />
-                <PublicRoute user={user} path='/signin' component={SignIn} />
-                <PublicRoute user={user} path='/signup' component={SignUpPage} />
-                <PrivateRoute user={user} path='/app' component={App} />
+                <PublicRoute user={user} exact path='/' component={WelcomePage}/>
+                <PublicRoute user={user} path='/signin' component={SignIn}/>
+                <PublicRoute user={user} path='/signup' component={SignUpPage}/>
+                <PrivateRoute user={user} path='/app' component={App}/>
             </Switch>
         );
     }
