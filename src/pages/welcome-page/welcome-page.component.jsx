@@ -6,14 +6,14 @@ import {Link} from "react-router-dom";
 const WelcomePage = () => {
     const pageContent = <>
         <div className="d-flex">
-            <Link to="/signin" className="btn btn-block btn-lg btn-dark d-block">
-                Sign In
+            <Link to="/signup" className="btn btn-block btn-lg btn-dark d-block">
+                Sign Up
             </Link>
         </div>
         <br/>
         <div className="d-flex">
-            <Link to="/signup" className="btn btn-block btn-lg btn-dark d-block">
-                Sign Up
+            <Link to="/signin" className="btn btn-block btn-lg btn-dark d-block">
+                Sign In
             </Link>
         </div>
     </>;

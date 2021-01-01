@@ -1,14 +1,17 @@
 import React from 'react';
 import './page-faded-centered-div.styles.scss';
-import BACKGROUND from '../../imgs/homebg3.jpg'
 
 const FadedDiv = ({children}) => {
     return (
         <>
-            <div className="welcome-page-container grayscale"
+            <div className="welcome-page-container"
                  style={{
                      position: "absolute",
-                     backgroundImage: `url(${BACKGROUND})`,
+
+                     // got the linear gradient off the top of this website : https://css-tricks.com/background-image-shapes/
+                     // css-tricks.com <3 <3
+                     backgroundImage: "linear-gradient(130deg,#ff7a18,#af002d 41.07%,#319197 76.05%)",
+
                      backgroundPosition: "center",
                      backgroundAttachment: "fixed"
                  }}/>
