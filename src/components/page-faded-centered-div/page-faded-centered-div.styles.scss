@@ -1,10 +1,14 @@
 .welcome-modal {
   filter: none;
   background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 5px;
+  //border-radius: 5px;
   color: #333;
   line-height: 1.5;
   padding: 1rem 2rem;
+
+  .btn {
+    border-radius: 0;
+  }
 
   a {
     color: #fff !important;
