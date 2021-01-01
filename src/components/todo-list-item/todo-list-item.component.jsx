@@ -1,8 +1,8 @@
-import React, {useState , useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './todo-list-item.styles.scss';
 import Textarea from 'react-expanding-textarea';
-import { ReactComponent as Trash } from "bootstrap-icons/icons/trash-fill.svg";
-import { removeToDo, updateToDo } from "../../firebase/firebaseinit";
+import {ReactComponent as Trash} from "bootstrap-icons/icons/trash-fill.svg";
+import {removeToDo, updateToDo} from "../../firebase/firebaseinit";
 
 
 const ToDoListItem = (props) => {
@@ -40,31 +40,33 @@ const ToDoListItem = (props) => {
         }
     }
 
-    const { collectionUUID, id } = props;
+    const {collectionUUID, id} = props;
     return (
         <div className="d-flex dim-hover-focus my-1 py-1">
             <div className="input-group">
-                <div className={`input-group-text bg-transparent no-outline colored-left-border ${completed ? "completed-task" : ""}`}>
+                <div
+                    className={`input-group-text bg-transparent no-outline colored-left-border ${completed ? "completed-task" : ""}`}>
                     <input className="form-check-input" type="checkbox" value=""
-                        aria-label="Checkbox for following text input" onChange={handleInputChange} checked={completed} />
+                           aria-label="Checkbox for following text input" onChange={handleInputChange}
+                           checked={completed}/>
                 </div>
-                <Textarea type="text" className={`form-control no-outline border-bottom-focus bg-transparent ${completed ? "text-decoration-line-through" : ""}`}
-                    autoComplete="off"
-                    aria-label="Text input with checkbox" name="val" value={val}
-                    onChange={handleInputChange} onBlur={lostFocus} />
+                <Textarea type="text"
+                          className={`form-control no-outline border-bottom-focus bg-transparent ${completed ? "text-decoration-line-through" : ""}`}
+                          autoComplete="off"
+                          aria-label="Text input with checkbox" name="val" value={val}
+                          onChange={handleInputChange} onBlur={lostFocus}/>
             </div>
 
             {/*trashcan svg on the right with delete functionality*/}
             <div className="ml-auto pl-2 d-flex">
                 <button onClick={() => removeToDo(id, collectionUUID)}
-                    className="border-0 btn-transition btn btn-outline-danger">
-                    <Trash />
+                        className="border-0 btn-transition btn btn-outline-danger">
+                    <Trash/>
                 </button>
             </div>
         </div>
     );
 }
-
 
 
 export default ToDoListItem;
