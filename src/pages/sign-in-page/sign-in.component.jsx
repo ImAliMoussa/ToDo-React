@@ -58,7 +58,7 @@ class SignIn extends React.Component {
                     </button>
                 </div>
                 <hr className="my-3"/>
-                <div className="m-2"><p className="text-muted fine-print text-secondary text-sm-center m-0">or</p></div>
+                <div className="m-2"><p className="text-muted fine-print text-secondary text-center m-0">or</p></div>
                 <div><GoogleButton onClick={(e) => this.handleSubmit(e, this.SIGN_IN_GOOGLE)}
                                    className="w-100 bg-white text-dark"/></div>
             </>;
