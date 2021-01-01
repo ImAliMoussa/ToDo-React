@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ReactComponent as AddLogo} from "bootstrap-icons/icons/card-list.svg";
+import {ReactComponent as AddLogo} from "bootstrap-icons/icons/plus.svg";
 import {createNewToDoList} from "../../firebase/firebaseCreateNewToDoList";
 
 const ToDoListCreator = () => {
@@ -30,8 +30,8 @@ const ToDoListCreator = () => {
                        placeholder="Create a new list" onChange={onChange} onKeyDown={userCreatedNewToDoList}/>
             </div>
             <div className="ml-auto pl-2 d-flex" onClick={userCreatedNewToDoList}>
-                <button className="border-0 btn-transition btn btn-outline-success">
-                    <AddLogo name="creator"/>
+                <button className="border-0 btn-transition btn btn-outline-success px-2">
+                    <AddLogo name="creator" style={{width: "1.5rem", height: "1.5rem"}}/>
                 </button>
             </div>
         </div>

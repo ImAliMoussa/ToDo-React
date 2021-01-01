@@ -42,11 +42,14 @@ export const addToDo = (collectionUUID) => {
     const val = ""
     const creationDate = firebase.firestore.Timestamp.now();
     const dueDate = creationDate;
+    const completed = false;
+
     firestore.collection(`todoCollections/${collectionUUID}/todos`).add({
         val,
         dueDate,
         creationDate,
-        priority
+        priority,
+        completed
     }).then(ret => {
         console.log({ret});
     }).catch(err => {
@@ -62,9 +65,12 @@ export const removeToDo = (documentUUID, collectionUUID) => {
     });
 };
 
-export const updateToDo = (collectionUUID, documentUUID, newToDoValue) => {
+export const updateToDo = (collectionUUID, documentUUID, newToDoValue, completed) => {
     firestore.doc(`todoCollections/${collectionUUID}/todos/${documentUUID}`)
-        .update({val: newToDoValue})
+        .update({
+            val: newToDoValue,
+            completed
+        })
         .then(() => {
             console.log("Document successfully updated!")
         })
