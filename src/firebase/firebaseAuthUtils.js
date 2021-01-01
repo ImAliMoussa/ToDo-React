@@ -10,7 +10,6 @@ export const signInWithGoogle = () => {
         const token = result.credential.accessToken;
         // The signed-in user info.
         const user = result.user;
-        console.log({token, user});
         createUserProfileDocument(user);
     }).catch((error) => {
         // Handle Errors here.
@@ -25,11 +24,7 @@ export const signInWithGoogle = () => {
 };
 
 export const signInWithEmail = (email, password) => {
-    console.log("sign in with email");
     firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((userAuth) => {
-            console.log("user successfully signed in", userAuth);
-        })
         .catch((error) => {
             const {message, code} = error;
             console.error({code, message});
@@ -52,10 +47,7 @@ export const signUpWithEmail = (fullName, email, password) => {
 }
 
 export const signOut = () => {
-    firebase.auth().signOut().then(() => {
-        // Sign-out successful.
-        console.log("Sign out was successful");
-    }).catch((error) => {
+    firebase.auth().signOut().catch((error) => {
         // An error happened.
         console.error("error occurred signing out", error);
     });

@@ -23,7 +23,6 @@ class SignIn extends React.Component {
     }
 
     handleSubmit = (event, name) => {
-        console.log({name})
         if (name === this.SIGN_IN_EMAIL) {
             const {email, password} = this.state;
             signInWithEmail(email, password);

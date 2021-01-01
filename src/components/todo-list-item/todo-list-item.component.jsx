@@ -6,7 +6,6 @@ import { removeToDo, updateToDo } from "../../firebase/firebaseinit";
 
 
 const ToDoListItem = (props) => {
-    console.log(`${props.val} has changed`);
     const [val, setVal] = useState(props.val);
     const [completed, setCompleted] = useState(props.completed)
 

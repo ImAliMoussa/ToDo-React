@@ -14,14 +14,10 @@ class App extends React.Component {
 
     componentDidMount() {
         const user = auth.currentUser;
-        console.log({user})
         this.unsubscribeFromToDoLists = firestore.collection(`users/${user.uid}/todos`)
             .onSnapshot((querySnapshot) => {
-                console.log("on snapshot");
                 const newToDoLists = [];
                 querySnapshot.forEach((doc) => {
-                    // console.log({id: doc.id});
-                    // console.log({data: doc.data()});
                     if (doc.exists)
                         newToDoLists.push({collectionUUID: doc.id, creationDate: doc.data().creationDate});
                 });
@@ -30,7 +26,7 @@ class App extends React.Component {
                 })
                 this.setState({userToDoLists: [...newToDoLists]});
             }, error => {
-                console.log("error occurred", {error})
+                console.error("error occurred", {error})
             });
     }
 

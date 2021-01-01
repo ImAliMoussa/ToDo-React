@@ -25,12 +25,10 @@ export const createUserProfileDocument = async (userAuth, fullName) => {
     if (!userAuth) return;
     const userRef = firestore.doc(`/users/${userAuth.uid}`);
     const snapshot = await userRef.get();
-    console.log(userAuth);
     if (!snapshot.exists) {
         await firestore.doc(`users/${userAuth.uid}`).set({
             fullName
         })
-            .then(ret => console.log(ret))
             .catch(err => console.error(err));
     }
 };
@@ -50,17 +48,13 @@ export const addToDo = (collectionUUID) => {
         creationDate,
         priority,
         completed
-    }).then(ret => {
-        console.log({ret});
     }).catch(err => {
         console.error({err});
     });
 };
 
 export const removeToDo = (documentUUID, collectionUUID) => {
-    firestore.doc(`todoCollections/${collectionUUID}/todos/${documentUUID}`).delete().then(function () {
-        console.log("Document successfully deleted!");
-    }).catch(function (error) {
+    firestore.doc(`todoCollections/${collectionUUID}/todos/${documentUUID}`).delete().catch(function (error) {
         console.error("Error removing document: ", error);
     });
 };
@@ -70,9 +64,6 @@ export const updateToDo = (collectionUUID, documentUUID, newToDoValue, completed
         .update({
             val: newToDoValue,
             completed
-        })
-        .then(() => {
-            console.log("Document successfully updated!")
         })
         .catch((error) => {
             // The document probably doesn't exist.

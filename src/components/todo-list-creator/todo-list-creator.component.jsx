@@ -7,7 +7,6 @@ const ToDoListCreator = () => {
     const ENTER_KEY = 13;
 
     const onChange = (e) => {
-        console.log(e);
         setTitle(e.target.value);
         if (e.keyCode === 13) {
             userCreatedNewToDoList();
